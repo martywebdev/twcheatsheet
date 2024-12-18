@@ -1,4 +1,5 @@
-const Select = ({ options, handleChange, label }) => {
+const Select = ({ options, handleChange, label, disabled=false}) => {
+  
   const handleSelect = (e) => handleChange(e.target.value);
 
   return (
@@ -12,6 +13,7 @@ const Select = ({ options, handleChange, label }) => {
       <select
         onChange={handleSelect}
         className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        disabled={disabled}
       >
         {options.map((option, index) => {
           // Check if the option is an object with a `class` property or a string

@@ -3,6 +3,7 @@ import { twValues } from "../data/tailwindData";
 import { useState } from "react";
 import { useEffect } from "react";
 const paddingVariants = [
+  "",
   "p", // Padding all sides
   "px", // Padding left and right
   "py", // Padding top and bottom
@@ -15,19 +16,30 @@ const SelectPadding = ({handleChange}) => {
   const [padding, setPadding] = useState("");
   const [value, setValue] = useState("");
 
+  const [disabled, setDisabled] = useState(true)
   useEffect(() => {
     if (padding && value) {
         handleChange(`${padding}-${value}`);
+    } else {
+      handleChange('')
     }
+
    
   }, [padding, value, handleChange]);
 
+  const onChange = padding => {
+    setDisabled(!padding)
+    if (padding) {
+      setPadding(padding)
+      setDisabled(false)
+    } 
+  }
   return (
     <>
       <h3>Utilities</h3>
       <div className="flex gap-4">
-        <Select options={paddingVariants} handleChange={(e) => setPadding(e)} />
-        <Select options={twValues} handleChange={(e) => setValue(e)} />
+        <Select options={paddingVariants} handleChange={onChange} />
+        <Select options={twValues} handleChange={(e) => setValue(e)} disabled={disabled} />
       </div>
     </>
   );

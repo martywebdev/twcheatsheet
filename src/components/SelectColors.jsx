@@ -83,11 +83,11 @@ const ColorShadeSelector = ({ type = "text", show = false }) => {
         </label>
         <select
           id="colorSelect"
-          value={selectedColor}
+          value={selectedColor || ""}
           onChange={handleColorChange}
           className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="" disabled selected>
+          <option value="" disabled >
             Select a color
           </option>
           {colors.map((color) => (
@@ -108,11 +108,11 @@ const ColorShadeSelector = ({ type = "text", show = false }) => {
         </label>
         <select
           id="shadeSelect"
-          value={selectedShade}
+          value={selectedShade || ''}
           onChange={handleShadeChange}
           className=" w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="" disabled selected>
+          <option value="" disabled >
             Select shade
           </option>
           {tailwindShades.map((shade) => (
