@@ -1,19 +1,11 @@
 export const tailwindClasses = [
   {
     category: "Typography",
-    examples: ["font family", "font size", "font-style"],
+    path: "/",
   },
   {
-    category: "Spacing",
-    examples: ["m-4", "p-2", "gap-4", "mt-1", "px-3"],
-  },
-  {
-    category: "Typography",
-    examples: ["text-xl", "font-bold", "leading-loose", "text-gray-700"],
-  },
-  {
-    category: "Colors",
-    examples: ["bg-red-500", "text-green-600", "border-blue-300"],
+    category: "Layout",
+    path: "layout",
   },
 ];
 

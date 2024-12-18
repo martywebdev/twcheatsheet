@@ -45,7 +45,6 @@ function App() {
 
     // Combine it with other class names, if any
     setTwclass([textColor, bgColor, border, ...Object.values(classNames)].join(" "));
-    console.log(selectedBg.color);
   }, [classNames, selectedColor, selectedBg, selectedBorder]);
   return (
     <>

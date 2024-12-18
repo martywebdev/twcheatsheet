@@ -50,7 +50,6 @@ const ColorShadeSelector = ({ type = "text", show = false, label='text-', shade=
   const selectedStyle = useSelector(
     (state) => state.color.selectedStyles[type]
   );
-  console.log(selectedStyle)
 
   // Handle color and shade change
   const handleColorChange = (e) => {

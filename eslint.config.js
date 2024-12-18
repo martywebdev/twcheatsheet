@@ -5,6 +5,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
 export default [
+  { "rules": { "react/prop-types": "off" } },
   { ignores: ["dist"] },
   {
     files: ["**/*.{js,jsx}"],

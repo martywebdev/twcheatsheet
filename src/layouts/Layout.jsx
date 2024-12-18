@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { tailwindClasses } from "../data/tailwindData";
 
 const Layout = () => {
@@ -12,13 +12,13 @@ const Layout = () => {
           <div className="flex flex-col flex-1 overflow-y-auto">
             <nav className="flex-1 px-2 py-4 bg-gray-800">
               {tailwindClasses.map((tailwindClass, index) => (
-                <a
+                <Link
                   key={index}
-                  href="#"
+                  to={tailwindClass.path}
                   className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700"
                 >
                   {tailwindClass.category}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

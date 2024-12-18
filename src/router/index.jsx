@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../layouts/Layout";
+import TWLayout from '../pages/TWLayout'
 import App from "../App";
 
 export const router = createBrowserRouter([
@@ -10,6 +11,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <App />
+      },
+      {
+        path: "/layout",
+        element: <TWLayout />
       }
     ]
   },
