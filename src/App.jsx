@@ -5,6 +5,7 @@ import { fontFamilies, fontSizes } from "./data/tailwindData";
 import ColorShadeSelector from "./components/SelectColors";
 import { useSelector } from "react-redux";
 import SelectPadding from "./components/SelectPadding";
+import SelectMargin from "./components/SelectMargin";
 // import SelectColors from './components/SelectColors'
 
 function App() {
@@ -15,6 +16,10 @@ function App() {
   );
   const selectedBg = useSelector(
     (state) => state.color.selectedStyles["background"]
+  );
+
+  const selectedBorder = useSelector(
+    (state) => state.color.selectedStyles["border"]
   );
   const handleChange = (key, value) => {
     setClassNames((prev) => {
@@ -29,6 +34,7 @@ function App() {
   useEffect(() => {
     let textColor = `text-${selectedColor.color}-${selectedColor.shade}`;
     let bgColor = selectedBg.color ? `bg-${selectedBg.color}-${selectedBg.shade}`: '';
+    let border = selectedBorder.color ? `border-${selectedBorder.color}-${selectedBorder.shade}`: '';
     if (selectedColor.color === "white" || selectedColor.color === "black") {
       textColor = `text-${selectedColor.color}`;
     }
@@ -38,9 +44,9 @@ function App() {
     }
 
     // Combine it with other class names, if any
-    setTwclass([textColor, bgColor, ...Object.values(classNames)].join(" "));
+    setTwclass([textColor, bgColor, border, ...Object.values(classNames)].join(" "));
     console.log(selectedBg.color);
-  }, [classNames, selectedColor, selectedBg]);
+  }, [classNames, selectedColor, selectedBg, selectedBorder]);
   return (
     <>
       <div className="flex gap-4">
@@ -86,8 +92,30 @@ function App() {
         <ColorShadeSelector show/>
         <ColorShadeSelector type="background" label="bg-"  show/>
       </div>
-      <div>
+      <div className="flex gap-4">
           <SelectPadding handleChange={e => handleChange('padding', e)}/>
+          <SelectMargin handleChange={e => handleChange('margin', e)}/>
+          <Select
+          label={"Radius"}
+          options={[
+            "rounded",
+            "rounded-md",
+            "rounded-lg",
+            "rounded-full",
+          ]}
+          handleChange={(e) => handleChange("rounded", e)}
+        />
+        <Select
+          label={"Radius"}
+          options={[
+            "border-0",
+            "border-2",
+            "border-4",
+            "border-8",
+          ]}
+          handleChange={(e) => handleChange("border", e)}
+        />
+        <ColorShadeSelector type="border" label="border-" />
       </div>
 
       <div className={`${twclass} `}>

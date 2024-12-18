@@ -36,9 +36,8 @@ const SelectPadding = ({handleChange}) => {
   }
   return (
     <>
-      <h3>Utilities</h3>
-      <div className="flex gap-4">
-        <Select options={paddingVariants} handleChange={onChange} />
+      <div className="flex gap-4 items-end">
+        <Select options={paddingVariants} handleChange={onChange} label={'padding'}/>
         <Select options={twValues} handleChange={(e) => setValue(e)} disabled={disabled} />
       </div>
     </>
