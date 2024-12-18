@@ -43,14 +43,14 @@ const tailwindShades = [
   "900",
 ];
 
-const ColorShadeSelector = ({ type = "text", show = false }) => {
-  const selectedColor = useSelector((state) => state.color.selectedColor);
-  const selectedShade = useSelector((state) => state.color.selectedShade);
+const ColorShadeSelector = ({ type = "text", show = false, label='text-', shade='shade' }) => {
+ 
 
   const dispatch = useDispatch();
   const selectedStyle = useSelector(
     (state) => state.color.selectedStyles[type]
   );
+  console.log(selectedStyle)
 
   // Handle color and shade change
   const handleColorChange = (e) => {
@@ -67,7 +67,9 @@ const ColorShadeSelector = ({ type = "text", show = false }) => {
 
   // Dynamically generate the class
   const previewClass = clsx(
-    `bg-${selectedColor}-${selectedShade}`,
+    selectedStyle.color === "white" || selectedStyle.color === "black"
+      ? `bg-${selectedStyle.color}`
+      : `bg-${selectedStyle.color}-${selectedStyle.shade}`,
     "w-10 h-10 rounded-lg border shadow"
   );
 
@@ -79,11 +81,11 @@ const ColorShadeSelector = ({ type = "text", show = false }) => {
           htmlFor="colorSelect"
           className="block text-gray-700 font-medium mb-2"
         >
-          Select {type} Color
+          {label}
         </label>
         <select
           id="colorSelect"
-          value={selectedColor || ""}
+          value={selectedStyle.color}
           onChange={handleColorChange}
           className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
@@ -104,13 +106,14 @@ const ColorShadeSelector = ({ type = "text", show = false }) => {
           htmlFor="shadeSelect"
           className="block text-gray-700 font-medium mb-2"
         >
-          Select Shade
+          {shade}
         </label>
         <select
           id="shadeSelect"
-          value={selectedShade || ''}
+          value={selectedStyle.shade}
           onChange={handleShadeChange}
           className=" w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          disabled={selectedStyle.color === 'white' || selectedStyle.color === 'black'}
         >
           <option value="" disabled >
             Select shade
@@ -125,7 +128,7 @@ const ColorShadeSelector = ({ type = "text", show = false }) => {
 
       {/* Preview */}
       {show && (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-end">
           <div className={clsx(previewClass)}></div>
         </div>
       )}

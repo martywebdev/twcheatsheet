@@ -83,8 +83,8 @@ function App() {
         />
       </div>
       <div className="flex gap-4">
-        <ColorShadeSelector />
-        <ColorShadeSelector type="background" />
+        <ColorShadeSelector show/>
+        <ColorShadeSelector type="background" label="bg-"  show/>
       </div>
       <div>
           <SelectPadding handleChange={e => handleChange('padding', e)}/>
