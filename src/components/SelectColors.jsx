@@ -1,7 +1,10 @@
+/* eslint-disable */
 import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setStyle } from "../store/colorSlice";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const colors = [
   "white",
@@ -43,32 +46,40 @@ const tailwindShades = [
   "900",
 ];
 
-const ColorShadeSelector = ({ type = "text", show = false, label='text-', shade='shade' }) => {
+const ColorShadeSelector = ({ type = "text", show = false, label='text-', shade='shade', hover=false}) => {
  
 
   const dispatch = useDispatch();
-  const selectedStyle = useSelector(
-    (state) => state.color.selectedStyles[type]
-  );
 
-  // Handle color and shade change
-  const handleColorChange = (e) => {
-    dispatch(
-      setStyle({ type, color: e.target.value, shade: selectedStyle.shade })
-    );
+  const [color, setColor] = useState({})
+  
+  const handleColorChange = (params) => {
+
+
+    let defaultShade = '';
+    if(params.color && (params.color === 'white' || params.color === 'black')) {
+      defaultShade = ''
+    } else {
+      defaultShade = '500'
+    }
+    
+    setColor((prev) => ({
+      ...prev, // Keep all previous keys and values
+      shade: defaultShade,
+      ...params, // Update or add the new key-value pairs
+    }));
   };
 
-  const handleShadeChange = (e) => {
-    dispatch(
-      setStyle({ type, color: selectedStyle.color, shade: e.target.value })
-    );
-  };
+  useEffect(() => {
+    if(color.type) {
+      dispatch(setStyle(color))
+    }
+  }, [color])
 
-  // Dynamically generate the class
   const previewClass = clsx(
-    selectedStyle.color === "white" || selectedStyle.color === "black"
-      ? `bg-${selectedStyle.color}`
-      : `bg-${selectedStyle.color}-${selectedStyle.shade}`,
+    color.color === "white" || color.color === "black"
+      ? `bg-${hover ? color.color : color.color}`
+      : `bg-${hover ?  `${color.color}-${color.shade}` : `${color.color}-${color.shade}`}`,
     "w-10 h-10 rounded-lg border shadow"
   );
 
@@ -78,14 +89,14 @@ const ColorShadeSelector = ({ type = "text", show = false, label='text-', shade=
       <div>
         <label
           htmlFor="colorSelect"
-          className="block text-gray-700 font-medium mb-2"
+          className="block text-gray-700 text-sm mb-2 lowercase"
         >
           {label}
         </label>
         <select
           id="colorSelect"
-          value={selectedStyle.color}
-          onChange={handleColorChange}
+          value={hover ? color.color : color.color || ''}
+          onChange={e => handleColorChange({type, 'color': e.target.value})}
           className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="" disabled >
@@ -103,16 +114,16 @@ const ColorShadeSelector = ({ type = "text", show = false, label='text-', shade=
       <div>
         <label
           htmlFor="shadeSelect"
-          className="block text-gray-700 font-medium mb-2"
+          className="block text-gray-700 text-sm mb-2 lowercase"
         >
           {shade}
         </label>
         <select
           id="shadeSelect"
-          value={selectedStyle.shade}
-          onChange={handleShadeChange}
-          className=" w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          disabled={selectedStyle.color === 'white' || selectedStyle.color === 'black'}
+          value={hover ? color.shade : color.shade || ""}
+          onChange={e => handleColorChange({type, 'shade': e.target.value})}
+          className=" w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"          
+          disabled={color.color === 'white' || color.color === 'black'}
         >
           <option value="" disabled >
             Select shade

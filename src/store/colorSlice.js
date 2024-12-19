@@ -1,20 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedStyles: {
-    text: { color: "black", shade: "500" },
-    background: { color: "", shade: "500" },
-    border: { color: "gray", shade: "300" },
-    ring: { color: "blue", shade: "500" },
-  },
+  selectedStyles: [
+    { type: 'text', color: "black", shade: "", hoverColor: "", hoverShade: "" },
+  ]
 };
 export const colorSlice = createSlice({
   name: "color",
   initialState,
   reducers: {
     setStyle: (state, action) => {
-      const { type, color, shade } = action.payload;
-      state.selectedStyles[type] = { color, shade };
+      const { type, ...rest } = action.payload;
+
+      // Find if the style already exists
+      const found = state.selectedStyles.find(style => style.type === type);
+
+      if (found) {
+        // Update the existing style
+        state.selectedStyles = state.selectedStyles.map(style =>
+          style.type === type ? { ...style, ...rest } : style
+        );
+      } else {
+        // Add a new style
+        state.selectedStyles.push({ type, ...rest });
+      }
     },
   },
 });

@@ -6,13 +6,13 @@ const Select = ({ options, handleChange, label, disabled=false}) => {
     <div className="mb-4">
       <label
         htmlFor="classSelect"
-        className="block text-gray-700 font-medium mb-2"
+        className="block text-gray-700 text-sm mb-2 capitalize"
       >
         {label}
       </label>
       <select
         onChange={handleSelect}
-        className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-2 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         disabled={disabled}
       >
         {options.map((option, index) => {
