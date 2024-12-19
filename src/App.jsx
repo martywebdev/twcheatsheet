@@ -6,6 +6,9 @@ function App() {
   const [twclass, setTwclass] = useState("");
   const [hover, setHover] = useState(false)
 
+  const handleHover = () => {
+    setHover(!hover)
+  }
   
   return (
     <>
@@ -14,12 +17,12 @@ function App() {
       <div className="md:flex md:items-center mb-6">
         <div className="md:w-1/3"></div>
         <label className="md:w-2/3 block text-gray-500 font-bold">
-          <input className="mr-2 leading-tight" type="checkbox" onChange={() => setHover(!hover)} />
+          <input className="mr-2 leading-tight" type="checkbox" onChange={handleHover} />
           <span className="text-sm">Hover</span>
         </label>
       </div>
 
-     {hover && <Input handleTwClasses={setTwclass} hover/>}
+     {hover && <Input handleTwClasses={setTwclass} hover={hover}/>}
 
       <div className={`${twclass} overflow-clip`}>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat

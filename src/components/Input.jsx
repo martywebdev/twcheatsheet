@@ -1,12 +1,12 @@
 /* eslint-disable */
 import ColorShadeSelector from "./SelectColors";
-import SelectPadding from "./SelectPadding";
 import Select from "./Select";
-import SelectMargin from "./SelectMargin";
 import { useState } from "react";
 import { fontFamilies, fontSizes } from "../data/tailwindData";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Utilities from "./Utilities";
+import { marginVariants, paddingVariants } from "../data/utilities";
 
 const Input = ({ handleTwClasses, hover = false }) => {
   const [classNames, setClassNames] = useState([]);
@@ -15,20 +15,33 @@ const Input = ({ handleTwClasses, hover = false }) => {
 
   
   useEffect(() => {
-    const selectClasses = Object.values(classNames).filter(Boolean)
-    const classes = selectClasses.join(' ')
+    if (!hover) {
+      const selectClasses = Object.values(classNames).filter(Boolean)
+      const classes = selectClasses.join(' ')
+    
+      const x = colorStyles.map(color => {
+        if (color.color === 'white' || color.color === 'black') {
+          return `${color.type}-${color.color}`
+        }
+        return `${color.type}-${color.color}-${color.shade}`
+      }).join(' ')
+      const combinedClasses = `${x} ${classes}`;
   
-    const x = colorStyles.map(color => {
-      if (color.color === 'white' || color.color === 'black') {
-        return `${color.type}-${color.color}`
-      }
-      return `${color.type}-${color.color}-${color.shade}`
-    }).join(' ')
-    const combinedClasses = `${x} ${classes}`;
+      handleTwClasses(combinedClasses)
+    } else {
+      const x = colorStyles.map(color => {
+        if (color.color === 'white' || color.color === 'black') {
+          return `${color.type}-${color.color}`
+        }
+        return `${color.type}-${color.color}-${color.shade}`
+      }).join(' ')
+    }
+      
 
-    handleTwClasses(combinedClasses)
+    
 
-  }, [ classNames, colorStyles]);
+  }, [ classNames, colorStyles, hover]);
+
 
   const handleChange = (key, value) => {
     setClassNames((prev) => {
@@ -40,6 +53,7 @@ const Input = ({ handleTwClasses, hover = false }) => {
     });
   };
 
+  
   return (
     <>
       <div className="flex space-x-4">
@@ -86,8 +100,8 @@ const Input = ({ handleTwClasses, hover = false }) => {
         <ColorShadeSelector type="bg" label="bg-" hover={hover} show />
       </div>
       <div className="flex space-x-4">
-        <SelectPadding handleChange={(e) => handleChange("padding", e)} />
-        <SelectMargin handleChange={(e) => handleChange("margin", e)} />
+        <Utilities options={paddingVariants} label={'padding'}  handleChange={(e) => handleChange("padding", e)}/>
+        <Utilities options={marginVariants} label={'margin'}  handleChange={(e) => handleChange("padding", e)}/>
         <Select
           label={"Radius"}
           options={["rounded", "rounded-md", "rounded-lg", "rounded-full"]}

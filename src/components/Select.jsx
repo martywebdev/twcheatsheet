@@ -1,4 +1,5 @@
-const Select = ({ options, handleChange, label, disabled=false}) => {
+/* eslint-disable */
+const Select = ({ options, handleChange, label, disabled=false, selected}) => {
   
   const handleSelect = (e) => handleChange(e.target.value);
 
@@ -14,6 +15,7 @@ const Select = ({ options, handleChange, label, disabled=false}) => {
         onChange={handleSelect}
         className="w-full px-2 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         disabled={disabled}
+        value={selected || ''}
       >
         {options.map((option, index) => {
           // Check if the option is an object with a `class` property or a string
