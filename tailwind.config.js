@@ -35,8 +35,19 @@ export default {
     {
       pattern: /rounded-./,
       variants: ['hover']
+    },
+    {
+      pattern: /font-./,
+      variants: ['hover']
+    },
+    {
+      pattern: /text-./,
+      variants: ['hover']
+    },
+    {
+      pattern: /border-./,
+      variants: ['hover']
     }
-    
     
   ],
 }

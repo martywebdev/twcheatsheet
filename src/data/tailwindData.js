@@ -105,7 +105,6 @@ export const fontSizes = [
 ];
 
 export const twValues = [
-  "",
   "0", // 0rem (0px)
   "0.5", // 0.125rem (2px)
   "1", // 0.25rem (4px)

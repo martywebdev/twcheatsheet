@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { useState } from "react";
+
 /* eslint-disable */
-const Select = ({ options, handleChange, label, disabled=false, selected}) => {
+const Select = ({ options, handleChange, label, disabled=false, selected : componentSelect}) => {
+
+  const [selected, setSelected] = useState(componentSelect)
   
-  const handleSelect = (e) => handleChange(e.target.value);
+  useEffect(() => setSelected(componentSelect), [componentSelect])
+
+  const handleSelect = (e) => {
+    handleChange(e.target.value);
+    setSelected(e.target.value)
+  } 
 
   return (
     <div className="mb-4">

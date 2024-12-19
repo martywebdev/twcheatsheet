@@ -10,50 +10,39 @@ import { marginVariants, paddingVariants } from "../data/utilities";
 
 const Input = ({ handleTwClasses, hover = false }) => {
   const [classNames, setClassNames] = useState([]);
-  
-  const colorStyles = useSelector(state => state.color.selectedStyles)
 
-  
+  const colorStyles = useSelector((state) => state.color.selectedStyles);
+
   useEffect(() => {
-    if (!hover) {
-      const selectClasses = Object.values(classNames).filter(Boolean)
-      const classes = selectClasses.join(' ')
-    
-      const x = colorStyles.map(color => {
-        if (color.color === 'white' || color.color === 'black') {
-          return `${color.type}-${color.color}`
+    const selectClasses = Object.values(classNames).filter(Boolean);
+    const classes = selectClasses.join(" ");
+
+    const colors = colorStyles
+      .map((color) => {
+        if (color.color === "white" || color.color === "black") {
+          return `${color.type}-${color.color}`;
         }
-        return `${color.type}-${color.color}-${color.shade}`
-      }).join(' ')
-      const combinedClasses = `${x} ${classes}`;
-  
-      handleTwClasses(combinedClasses)
-    } else {
-      const x = colorStyles.map(color => {
-        if (color.color === 'white' || color.color === 'black') {
-          return `${color.type}-${color.color}`
-        }
-        return `${color.type}-${color.color}-${color.shade}`
-      }).join(' ')
-    }
-      
+        return `${color.type}-${color.color}-${color.shade}`;
+      })
+      .join(" ");
 
-    
-
-  }, [ classNames, colorStyles, hover]);
-
+    const combinedClasses = `${colors} ${classes}`;
+    handleTwClasses(combinedClasses);
+  }, [classNames, colorStyles]);
 
   const handleChange = (key, value) => {
+    const upKey = hover ? `hover${key}` : key;
+    const upValue = hover ? `hover:${value}` : value;
+
     setClassNames((prev) => {
       // Only update the key if it doesn't already exist in the object
-      if (prev[key] !== value) {
-        return { ...prev, [key]: value };
+      if (prev[upKey] !== upValue) {
+        return { ...prev, [upKey]: upValue };
       }
       return prev; // Return the previous state if the key already has the same value
     });
   };
 
-  
   return (
     <>
       <div className="flex space-x-4">
@@ -66,6 +55,7 @@ const Input = ({ handleTwClasses, hover = false }) => {
           label={"Font Size"}
           options={fontSizes}
           handleChange={(e) => handleChange("fontSize", e)}
+          selected={"text-base"}
         />
         <Select
           label={"Align"}
@@ -78,6 +68,7 @@ const Input = ({ handleTwClasses, hover = false }) => {
             "text-end",
           ]}
           handleChange={(e) => handleChange("textAlign", e)}
+          selected={"text-left"}
         />
         <Select
           label={"Font Weight"}
@@ -99,9 +90,17 @@ const Input = ({ handleTwClasses, hover = false }) => {
         <ColorShadeSelector show />
         <ColorShadeSelector type="bg" label="bg-" hover={hover} show />
       </div>
-      <div className="flex space-x-4">
-        <Utilities options={paddingVariants} label={'padding'}  handleChange={(e) => handleChange("padding", e)}/>
-        <Utilities options={marginVariants} label={'margin'}  handleChange={(e) => handleChange("padding", e)}/>
+      <div className="flex space-x-4 mt-3">
+        <Utilities
+          options={paddingVariants}
+          label={"padding"}
+          handleChange={(e) => handleChange("padding", e)}
+        />
+        <Utilities
+          options={marginVariants}
+          label={"margin"}
+          handleChange={(e) => handleChange("margin", e)}
+        />
         <Select
           label={"Radius"}
           options={["rounded", "rounded-md", "rounded-lg", "rounded-full"]}

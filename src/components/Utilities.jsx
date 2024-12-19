@@ -19,10 +19,8 @@ const Utilities = ({ handleChange, options, label }) => {
 
     if (utility && value) {
       handleChange(`${utility}-${value}`);
-    } else {
-      handleChange("");
-    }
-    
+    } 
+
   }, [utility, value]);
 
   const onChange = (util) => {
