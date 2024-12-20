@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
+
+/* .tooltip {
+  @apply invisible absolute;
+} */
+.has-tooltip:hover .tooltip{
+  @apply bg-red-500;
+}
 @tailwind utilities;

@@ -1,5 +1,5 @@
 import Select from "../components/Select";
-import { fontFamilies, fontSizes } from "./typography";
+import { fontFamilies, fontSizes, fontWeights, textAlignment } from "./typography";
 
 export const tailwindClasses = [
   {
@@ -16,13 +16,26 @@ export const tailwindClasses = [
         component: Select,
         label: 'Font Size',
         options: fontSizes,
-        tag: 'fontSize'
+        tag: 'fontSize',
       },
+      {
+        component: Select,
+        label: 'Alignment',
+        options: textAlignment,
+        tag: 'textAlign'
+      },
+      {
+        component: Select,
+        label: 'Font Weight',
+        options: fontWeights,
+        tag: 'fontWeight'
+      }
+      
       
     ]
   },
   {
-    category: "Layout",
+    category: "Utilities",
     path: "layout",
     elements: [
       {

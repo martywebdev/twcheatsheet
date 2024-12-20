@@ -37,8 +37,7 @@ const Layout = () => {
                             <Component
                               {...props}
                               handleChange={(value) => dispatch(setTypography({tag, value}))}
-                            />{" "}
-                            {/* Dynamically render the component */}
+                            />
                           </div>
                         );
                       })}

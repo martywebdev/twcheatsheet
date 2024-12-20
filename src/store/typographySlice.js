@@ -12,7 +12,6 @@ export const typographySlice = createSlice({
   reducers: {
     setTypography: (state, action) => {
       const { tag, value } = action.payload;
-      console.log(state, action.payload);
       state[tag] = value;
       state.fontStyles = Object.keys(state)
         .filter(key => key !== 'fontStyles' && state[key])  // Exclude 'fontStyles' and ensure the value is truthy
