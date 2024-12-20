@@ -2,7 +2,6 @@
 import ColorShadeSelector from "./SelectColors";
 import Select from "./Select";
 import { useState } from "react";
-import { fontFamilies, fontSizes } from "../data/tailwindData";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import Utilities from "./Utilities";
@@ -49,7 +48,7 @@ const Input = ({ handleTwClasses, hover = false }) => {
   return (
     <>
       <div className="flex space-x-4">
-        <Select
+        {/* <Select
           label={"Font Family"}
           options={fontFamilies}
           handleChange={(e) => handleChange("font", e)}
@@ -59,7 +58,7 @@ const Input = ({ handleTwClasses, hover = false }) => {
           options={fontSizes}
           handleChange={(e) => handleChange("fontSize", e)}
           selected={"text-base"}
-        />
+        /> */}
         <Select
           label={"Align"}
           options={[
