@@ -5,6 +5,7 @@ import { useState } from "react";
 import Select from "./Select";
 
 const colors = [
+  "transparent",
   "white",
   "black",
   "slate",
@@ -45,16 +46,16 @@ const shades = [
   "900",
 ];
 
-const SelectColors = ({type, handleChange, label
-}) => {
-  const [color, setColor] = useState('white')
+const SelectColors = ({type, handleChange, label, defaultColor }) => {
+  const [color, setColor] = useState(defaultColor ?? '')
   const [shade, setShade] = useState('')
 
   useEffect(() => {
     if (!color) {
       setShade('')
       handleChange('')
-    }else if (color === 'white' && color === 'black') {
+    }
+    if (color === 'white' || color === 'black') {
       setShade('')
       handleChange(`${type}-${color}`)
       console.log('test')
@@ -86,7 +87,7 @@ const SelectColors = ({type, handleChange, label
         options={colors}
         handleChange={onChange}
         label={label}
-        // selected={utility}
+        selected={color}
       />
       <Select
         options={shades}

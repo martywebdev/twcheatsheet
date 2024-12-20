@@ -48,13 +48,14 @@ export const tailwindClasses = [
             component: SelectColors,
             label: "select text colors",
             tag: "textColors",
-            type: 'text'
+            type: 'text',
+            defaultColor: 'black'
           },
           {
             component: SelectColors,
             label: "select background colors",
             tag: "bgColors",
-            type: 'bg'
+            type: 'bg',
           },
           
           {
