@@ -19,14 +19,17 @@ const Input = ({ handleTwClasses, hover = false }) => {
 
     const colors = colorStyles
       .map((color) => {
+        
         if (color.color === "white" || color.color === "black") {
           return `${color.type}-${color.color}`;
         }
+        
         return `${color.type}-${color.color}-${color.shade}`;
       })
       .join(" ");
 
     const combinedClasses = `${colors} ${classes}`;
+    console.log(colorStyles)
     handleTwClasses(combinedClasses);
   }, [classNames, colorStyles]);
 
@@ -88,7 +91,7 @@ const Input = ({ handleTwClasses, hover = false }) => {
       </div>
       <div className="flex space-x-4">
         <ColorShadeSelector show />
-        <ColorShadeSelector type="bg" label="bg-" hover={hover} show />
+        <ColorShadeSelector type={hover? `hover:bg`: `bg`} label="bg-" hover={hover} show />
       </div>
       <div className="flex space-x-4 mt-3">
         <Utilities

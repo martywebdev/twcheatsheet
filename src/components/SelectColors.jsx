@@ -54,34 +54,22 @@ const ColorShadeSelector = ({
 }) => {
   const dispatch = useDispatch();
   const [color, setColor] = useState({});
-  const handleColorChange = (params) => {
+  const handleColorChange = (event) => {
+    const key = event.target.name;
+    const value = event.target.value;
     let defaultShade = "";
 
-    if (hover) {
-      const x = params.color && {hoverColor:params.color}
-      const y = params.shade && {hoverColor:params.shade}
-      params = {
-        type,
-        ...x,
-        ...y
-      }
-    }
-
-    
-    if (
-      params.color &&
-      (params.color === "white" || params.color === "black")
-    ) {
+    if (value && (value === "white" || value === "black")) {
       defaultShade = "";
     } else {
       defaultShade = "500";
     }
 
-    console.log(params)
     setColor((prev) => ({
-      ...prev, // Keep all previous keys and values
+      ...prev,
+      type,
       shade: defaultShade,
-      ...params, // Update or add the new key-value pairs
+      [key]: value,
     }));
   };
 
@@ -89,16 +77,14 @@ const ColorShadeSelector = ({
     if (color.type) {
       dispatch(setStyle(color));
     }
-
-    console.log(color);
   }, [color]);
 
   const previewClass = clsx(
     color.color === "white" || color.color === "black"
-      ? `bg-${hover ? color.color : color.color}`
+      ? `bg-${hover ? color.hoverColor : color.color}`
       : `bg-${
           hover
-            ? `${color.color}-${color.shade}`
+            ? `${color.hoverColor}-${color.hoverShade}`
             : `${color.color}-${color.shade}`
         }`,
     "w-10 h-10 rounded-lg border shadow"
@@ -117,7 +103,8 @@ const ColorShadeSelector = ({
         <select
           id="colorSelect"
           value={hover ? color.color : color.color || ""}
-          onChange={(e) => handleColorChange({ type, color: e.target.value })}
+          name={"color"}
+          onChange={handleColorChange}
           className="w-full px-2 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="" disabled>
@@ -142,7 +129,8 @@ const ColorShadeSelector = ({
         <select
           id="shadeSelect"
           value={hover ? color.shade : color.shade || ""}
-          onChange={(e) => handleColorChange({ type, shade: e.target.value })}
+          name={"shade"}
+          onChange={handleColorChange}
           className="w-full px-2 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={color.color === "white" || color.color === "black"}
         >
