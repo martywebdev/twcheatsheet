@@ -14,7 +14,8 @@ const Utilities = ({ handleChange, options, label }) => {
     setDisabled(!utility);
 
     if (!utility) {
-      setValue("");
+      setValue("0");
+      handleChange('')
     }
 
     if (utility && value) {

@@ -12,6 +12,7 @@ function App() {
   // }
   
   const typography = useSelector(state => state.typography.fontStyles)
+  const utilities = useSelector(state => state.utility.utilities)
   return (
     <>
       {/* <Input handleTwClasses={setTwclass} />
@@ -26,7 +27,7 @@ function App() {
 
      {hover && <Input handleTwClasses={setTwclass} hover={hover}/>} */}
 
-      <div className={`${typography}`}>
+      <div className={`${typography} ${utilities}`}>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat
         molestias sapiente cupiditate quidem! Recusandae illo dolores,
         repellendus molestias voluptatibus reiciendis dolorem aut magni aliquam

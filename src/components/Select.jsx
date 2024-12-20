@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 /* eslint-disable */
-const Select = ({ options, handleChange, label, disabled = false}) => {
+const Select = ({ options, handleChange, label, disabled = false, selected: defaultVal}) => {
   
   const [selected, setSelected] = useState({});
 
@@ -13,6 +14,7 @@ const Select = ({ options, handleChange, label, disabled = false}) => {
     setSelected(selectedValue);
   };
 
+  
   return (
     <div className="mb-4">
       <label
@@ -26,6 +28,7 @@ const Select = ({ options, handleChange, label, disabled = false}) => {
         className="w-full px-2 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
         disabled={disabled}
         title={selected.css && `${selected.css} / ${selected.description}`}
+        value={selected.class || defaultVal}
       >
         {options.map((option, index) => {
           // Check if the option is an object with a `class` property or a string

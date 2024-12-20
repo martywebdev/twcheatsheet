@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setTypography } from "../store/typographySlice";
 
 const Layout = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <>
       <div className="flex h-screen bg-gray-100">
@@ -22,11 +22,40 @@ const Layout = () => {
                     className="block text-blue-400 mb-2 hover:underline"
                     onClick={(e) => e.stopPropagation()} // Prevent dropdown toggle
                   >
-                    {tailwindClass.category}
+                    {tailwindClass.title}
                   </Link>
 
                   {/* Dropdown */}
-                  <details className="bg-gray-700 rounded-md px-4 py-2 text-gray-100 hover:bg-gray-600">
+                  {tailwindClass.sections.map((section, index) => (
+                    <details
+                      key={index}
+                      className="bg-gray-700 rounded-md px-4 py-2 text-gray-100 hover:bg-gray-600"
+                    >
+                      <summary className="cursor-pointer">
+                        {section.category}
+                      </summary>
+                      <div className="mt-2">
+                        {section.elements.map((element, idx) => {
+                          const {
+                            component: Component,
+                            tag,
+                            ...props
+                          } = element; // Extract component and props
+                          return (
+                            <div key={idx} className="py-1">
+                              <Component
+                                {...props}
+                                handleChange={(value) =>
+                                  dispatch(section.dispatch({ tag, value }))
+                                }
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </details>
+                  ))}
+                  {/* <details className="bg-gray-700 rounded-md px-4 py-2 text-gray-100 hover:bg-gray-600">
                     <summary className="cursor-pointer">View All</summary>
 
                     <div className="mt-2">
@@ -42,7 +71,7 @@ const Layout = () => {
                         );
                       })}
                     </div>
-                  </details>
+                  </details> */}
                 </div>
               ))}
             </nav>
