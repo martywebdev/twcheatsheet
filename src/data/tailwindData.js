@@ -1,4 +1,5 @@
 import Select from "../components/Select";
+import SelectColors from "../components/SelectColors";
 import Utilities from "../components/Utilities";
 import { setTypography } from "../store/typographySlice";
 import { setUtility } from "../store/utilitySlice";
@@ -43,6 +44,27 @@ export const tailwindClasses = [
             options: fontWeights,
             tag: "fontWeight",
           },
+          {
+            component: SelectColors,
+            label: "select text colors",
+            tag: "textColors",
+            type: 'text'
+          },
+          {
+            component: SelectColors,
+            label: "select background colors",
+            tag: "bgColors",
+            type: 'bg'
+          },
+          
+          {
+            component: SelectColors,
+            label: "select hover colors",
+            tag: "bgHover",
+            type: 'hover:bg'
+          },
+          
+
         ],
       },
       {
@@ -67,6 +89,12 @@ export const tailwindClasses = [
             options: ["border-0", "border-2", "border-4", "border-8"],
             label: 'border',
             tag: 'border'
+          },
+          {
+            component: SelectColors,
+            label: "select border colors",
+            tag: "borderColors",
+            type: 'border'
           },
         ],
       },
