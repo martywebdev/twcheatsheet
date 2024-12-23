@@ -15,18 +15,21 @@ const Utilities = ({ handleChange, options, label }) => {
 
     if (!utility) {
       setValue("0");
-      handleChange('')
+      handleChange("");
     }
 
     if (utility && value) {
       handleChange(`${utility}-${value}`);
-    } 
-
+    }
   }, [utility, value]);
 
   const onChange = (util) => {
     setUtility(util);
   };
+
+  // const addUtility = () => {
+    
+  // }
 
   return (
     <div className="flex gap-4 items-end">
@@ -42,6 +45,19 @@ const Utilities = ({ handleChange, options, label }) => {
         disabled={disabled}
         selected={value}
       />
+
+      {/* <div className="flex items-center min-h-[70px]">
+        <button
+          className="bg-gray-400 px-4 py-0.5 mt-1 rounded-md text-lg text-white 
+            hover:bg-gray-500 
+            focus:outline-none focus:ring-2 focus:ring-blue-500 
+            active:bg-gray-600 
+            transition-colors"
+            onClick={addUtility}
+        >
+          +
+        </button>
+      </div> */}
     </div>
   );
 };

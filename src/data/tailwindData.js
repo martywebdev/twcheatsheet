@@ -53,6 +53,13 @@ export const tailwindClasses = [
           },
           {
             component: SelectColors,
+            label: "select hover text colors",
+            tag: "textHover",
+            type: 'hover:text',
+            defaultColor: 'black'
+          },
+          {
+            component: SelectColors,
             label: "select background colors",
             tag: "bgColors",
             type: 'bg',
@@ -74,13 +81,13 @@ export const tailwindClasses = [
         dispatch: setUtility,
         elements: [
           {
-            component: Utilities,
+            component: [Utilities, Utilities],
             options: paddingVariants,
             label: 'Padding',
             tag: 'padding'
           },
           {
-            component: Utilities,
+            component: [Utilities, Utilities],
             options: marginVariants,
             label: 'Margin',
             tag: 'margin'
@@ -96,6 +103,12 @@ export const tailwindClasses = [
             label: "select border colors",
             tag: "borderColors",
             type: 'border'
+          },
+          {
+            component: Select,
+            label: "Border Radius",
+            options: ["rounded", "rounded-md", "rounded-lg", "rounded-full"],
+            tag: "borderRadius",
           },
         ],
       },

@@ -53,7 +53,8 @@ export default {
       variants: ["hover"],
     },
     {
-      pattern: /bg-(black|white)/, // Allow non-shaded colors like black and white
+      pattern: /bg-(black|white)/, 
+      variants: ["hover"],
     },
     {
       pattern:

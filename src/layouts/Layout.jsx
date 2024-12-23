@@ -41,16 +41,33 @@ const Layout = () => {
                             tag,
                             ...props
                           } = element; // Extract component and props
-                          return (
-                            <div key={idx} className="py-1">
-                              <Component
-                                {...props}
-                                handleChange={(value) =>
-                                  dispatch(section.dispatch({ tag, value }))
-                                }
-                              />
-                            </div>
-                          );
+
+                          if (Array.isArray(element.component)) {
+                           return element.component.map((ArrComponent, idxs) => {
+                              const arrTag = `${tag}-${idxs}`
+                              return (
+                                <div key={idxs} className="py-1">
+                                  <ArrComponent
+                                    {...props}
+                                    handleChange={(value) =>
+                                      dispatch(section.dispatch({ tag: arrTag, value }))
+                                    }
+                                  />
+                                </div>
+                              );
+                            });
+                          } else {
+                            return (
+                              <div key={idx} className="py-1">
+                                <Component
+                                  {...props}
+                                  handleChange={(value) =>
+                                    dispatch(section.dispatch({ tag, value }))
+                                  }
+                                />
+                              </div>
+                            );
+                          }
                         })}
                       </div>
                     </details>
