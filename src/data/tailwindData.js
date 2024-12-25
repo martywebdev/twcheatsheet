@@ -10,7 +10,6 @@ import {
   textAlignment,
 } from "./typography";
 import { marginVariants, paddingVariants } from "./utilities";
-
 export const tailwindClasses = [
   {
     title: "Basic",

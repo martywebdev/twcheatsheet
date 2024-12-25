@@ -1,7 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { tailwindClasses } from "../data/tailwindData";
 import { useDispatch } from "react-redux";
-import { setTypography } from "../store/typographySlice";
 
 const Layout = () => {
   const dispatch = useDispatch();
