@@ -5,7 +5,7 @@ import { setFlex } from "../store/flexSlice";
 import { setFlexUtility } from "../store/flexUtilitySlice";
 import { setTypography } from "../store/typographySlice";
 import { setUtility } from "../store/utilitySlice";
-import { twAlign, twFlex, twFlexWrap, twJustify } from "./layout";
+import { twAlign, twFlex, twJustify } from "./layout";
 import { twHeights, twWidths } from "./sizing";
 import {
   fontFamilies,
@@ -234,6 +234,13 @@ export const tailwindClasses = [
       },
     ]
   },
+  {
+    title: "Filters",
+    path: '/filters',
+    sections: [
+      
+    ]
+  }
 ];
 
 export const twValues = [
