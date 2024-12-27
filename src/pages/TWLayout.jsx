@@ -41,11 +41,13 @@ const TWLayout = () => {
         doloremque ducimus laudantium?
       </div>
 
+      
+
       <div className="mt-10">
         <h3 className="text-lg font-semibold">Flex</h3>
         <button className="rounded-lg border-2 py-2 px-3 text-lg mr-4" onClick={handleCount}>+</button>
         <button className="rounded-lg border-2 py-2 px-3 text-lg mr-4" onClick={removeCount}>-</button>
-        <div className={`mt-10 flex ${flex} ${flextUtilities}`}>
+        <div className={`mt-10 flex ${flex} ${flextUtilities} flex-wrap-reverse`}>
           {count.map((item, idx) => {
             const bg = `bg-red-${item}00`;
 
