@@ -133,6 +133,42 @@ export const tailwindClasses = [
     ],
   },
   {
+    title: 'Background',
+    path: '/background',
+    sections: [
+      {
+        category: 'Sizing',
+        dispatch: setUtility,
+        elements: [
+          {
+            component: Select,
+            label: "Width",
+            options: twWidths,
+            tag: "width",
+          },
+          {
+            component: Select,
+            label: "height",
+            options: twHeights,
+            tag: "height",
+          },
+          {
+            component: Select,
+            options: ["border-0", "border-2", "border-4", "border-8"],
+            label: 'border',
+            tag: 'border'
+          },
+          {
+            component: SelectColors,
+            label: "select border colors",
+            tag: "borderColors",
+            type: 'border'
+          },
+        ]
+      }
+    ]
+  },
+  {
     title: "Layout",
     path: "/layout",
     sections: [
