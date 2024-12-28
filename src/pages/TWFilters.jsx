@@ -6,7 +6,11 @@ import {
   blurs,
   brightnessList,
   contrastList,
+  filterValues,
+  rotateValues,
+  translateValues,
 } from "../data/filters";
+import Utilities from "../components/Utilities";
 
 const TWFilters = () => {
   const [blur, setBlur] = useState("");
@@ -15,6 +19,9 @@ const TWFilters = () => {
   const [grayscale, setGrayScale] = useState("");
   const [backdrop, setBackdrop] = useState("");
   const [backdropBlur, setBackdropBlur] = useState("");
+  const [scale, setScale] = useState("");
+  const [rotate, setRotate] = useState("");
+  const [translate, setTranslate] = useState('')
 
   return (
     <>
@@ -92,8 +99,41 @@ const TWFilters = () => {
         </p>
       </div>
 
-      <div className="container max-w-screen-sm h-auto mx-auto">
-        <img src="/img/cyberpunk-small.jpg" alt="" className="h-[300px]" />
+      <div>
+        <div className="flex gap-2">
+          <Utilities
+            options={[" ", "scale", "scale-x", "scale-y"]}
+            secondaryOptions={filterValues}
+            handleChange={setScale}
+            label={"scale"}
+            isDark
+          />
+          <Select
+            options={rotateValues}
+            handleChange={setRotate}
+            label={"rotate"}
+            isDark
+          />
+
+          <Utilities
+            options={[" ", "translate-x", "translate-y"]}
+            secondaryOptions={translateValues}
+            handleChange={setTranslate}
+            label={"translate"}
+            isDark
+          />
+        </div>
+
+        <div className="container max-w-screen-sm h-auto mx-auto  border-8">
+          <img
+            src="/img/cyberpunk-small.jpg"
+            alt=""
+            className={`h-[600px] w-full ${scale} ${rotate} ${translate}`}
+          />
+        </div>
+        <p className="bg-black text-white p-4 hover:invert border-2">
+          check also use other options here! like skew transform origin
+        </p>
       </div>
     </>
   );

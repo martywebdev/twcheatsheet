@@ -3,9 +3,8 @@ import React from "react";
 import Select from "./Select";
 import { useState } from "react";
 import { useEffect } from "react";
-import { twValues } from "../data/tailwindData";
 
-const Utilities = ({ handleChange, options, label }) => {
+const Utilities = ({ handleChange, options, secondaryOptions, label }) => {
   const [utility, setUtility] = useState("");
   const [value, setValue] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -40,7 +39,7 @@ const Utilities = ({ handleChange, options, label }) => {
         selected={utility}
       />
       <Select
-        options={twValues}
+        options={secondaryOptions}
         handleChange={(e) => setValue(e)}
         disabled={disabled}
         selected={value}

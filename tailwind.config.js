@@ -70,5 +70,11 @@ export default {
       pattern: /flex-./,
       variants: ['hover']
     },
+    {
+      pattern: /scale-./
+    },
+    {
+      pattern: /translate-./
+    }
   ],
 };
