@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Select from "../components/Select";
-import { backdropBlurs, backdropBrightnessList, blurs, brightnessList, contrastList } from "../data/filters";
-
+import {
+  backdropBlurs,
+  backdropBrightnessList,
+  blurs,
+  brightnessList,
+  contrastList,
+} from "../data/filters";
 
 const TWFilters = () => {
   const [blur, setBlur] = useState("");
@@ -15,18 +20,26 @@ const TWFilters = () => {
     <>
       <div className="container max-w-screen-sm h-auto mx-auto">
         <div className="flex gap-2">
-          <Select options={blurs} handleChange={setBlur} label={"blur"} />
           <Select
+            isDark
+            options={blurs}
+            handleChange={setBlur}
+            label={"blur"}
+          />
+          <Select
+            isDark
             options={brightnessList}
             handleChange={setBrightness}
             label={"brightness"}
           />
           <Select
+            isDark
             options={contrastList}
             handleChange={setContrast}
             label={"contrast"}
           />
           <Select
+            isDark
             options={["grayscale-[0]", "grayscale"]}
             handleChange={setGrayScale}
             label={"grayscale"}
@@ -44,12 +57,14 @@ const TWFilters = () => {
 
       <div className="flex gap-2">
         <Select
+          isDark
           options={backdropBrightnessList}
           handleChange={setBackdrop}
           label={"brightness"}
         />
 
         <Select
+          isDark
           options={backdropBlurs}
           handleChange={setBackdropBlur}
           label={"blur"}
@@ -58,7 +73,9 @@ const TWFilters = () => {
       <div
         className={`bg-[url('/img/backdrop2.jpg')] min-h-screen bg-cover bg-center flex justify-center items-center `}
       >
-        <div className={`rounded-xl border bg-white/60 p-5 w-5/6 ${backdrop} ${backdropBlur}`}>
+        <div
+          className={`rounded-xl border bg-white/60 p-5 w-5/6 ${backdrop} ${backdropBlur}`}
+        >
           <h3 className="text-3xl font-semibold mb-2">Backdrop</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
@@ -69,8 +86,9 @@ const TWFilters = () => {
         </div>
       </div>
       <p className="bg-black text-white p-4 hover:invert border-2">
-          check also use other options here! like backdrop-sepia backdrop-grayscale
-        </p>
+        check also use other options here! like backdrop-sepia
+        backdrop-grayscale
+      </p>
     </>
   );
 };

@@ -7,7 +7,7 @@ const Select = ({
   handleChange,
   label,
   disabled = false,
-  dark = false,
+  isDark = false,
   selected: defaultVal,
 }) => {
   const [selected, setSelected] = useState({});
@@ -30,7 +30,7 @@ const Select = ({
     <div className="mb-4">
       <div className="flex flex-col min-h-[70px] justify-end">
         {label && (
-          <label className={`block ${dark ? `text-black` : `text-black` } text-sm mb-2 capitalize`}>
+          <label className={`block ${isDark ? `text-black` : `text-white` } text-sm mb-2 capitalize`}>
             {label}
           </label>
         )}
