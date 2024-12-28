@@ -58,7 +58,7 @@ const TWBackground = () => {
           <Select options={['bg-left', 'bg-center', 'bg-right', 'bg-left-bottom', 'bg-left-top', 'bg-right-bottom', 'bg-right-top', 'bg-top', 'bg-[50%_50%]']} handleChange={(e) => handleChange({tag: 'position', value: e})} />
           <Select options={['bg-auto', 'bg-cover', 'bg-contain']} handleChange={(e) => handleChange({tag: 'scale', value: e})}/>
         </div>
-        <div className={`bg-[url('/img/cyberpunk-small.jpg')] ${utilities} ${bg.utilities}`}>
+        <div className={`bg-[url('/img/cyberpunk-sm.jpg')]  ${utilities} ${bg.utilities}`}>
 
         </div>
       </div>
