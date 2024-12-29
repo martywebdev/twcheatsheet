@@ -58,7 +58,6 @@ const SelectColors = ({type, handleChange, label, defaultColor }) => {
     if (color === 'white' || color === 'black') {
       setShade('')
       handleChange(`${type}-${color}`)
-      console.log('test')
     }
     if (color && shade) {
       handleChange(`${type}-${color}-${shade}`)

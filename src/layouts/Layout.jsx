@@ -1,9 +1,13 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { tailwindClasses } from "../data/tailwindData";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { components } from "../data/component";
 
 const Layout = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+
   return (
     <>
       <div className="flex h-screen bg-gray-100">
@@ -28,7 +32,11 @@ const Layout = () => {
                   {tailwindClass.sections.map((section, index) => (
                     <details
                       key={index}
-                      className="bg-gray-700 rounded-md px-4 py-2 text-gray-100 hover:bg-gray-600"
+                      className={`${
+                        location.pathname === tailwindClass.path
+                          ? "block"
+                          : "hidden"
+                      } bg-gray-700 rounded-md px-4 py-2 text-gray-100 hover:bg-gray-600`}
                     >
                       <summary className="cursor-pointer">
                         {section.category}
@@ -42,19 +50,26 @@ const Layout = () => {
                           } = element; // Extract component and props
 
                           if (Array.isArray(element.component)) {
-                           return element.component.map((ArrComponent, idxs) => {
-                              const arrTag = `${tag}-${idxs}`
-                              return (
-                                <div key={idxs} className="py-1">
-                                  <ArrComponent
-                                    {...props}
-                                    handleChange={(value) =>
-                                      dispatch(section.dispatch({ tag: arrTag, value }))
-                                    }
-                                  />
-                                </div>
-                              );
-                            });
+                            return element.component.map(
+                              (ArrComponent, idxs) => {
+                                const arrTag = `${tag}-${idxs}`;
+                                return (
+                                  <div key={idxs} className="py-1">
+                                    <ArrComponent
+                                      {...props}
+                                      handleChange={(value) =>
+                                        dispatch(
+                                          section.dispatch({
+                                            tag: arrTag,
+                                            value,
+                                          })
+                                        )
+                                      }
+                                    />
+                                  </div>
+                                );
+                              }
+                            );
                           } else {
                             return (
                               <div key={idx} className="py-1">
@@ -90,6 +105,39 @@ const Layout = () => {
                   </details> */}
                 </div>
               ))}
+
+              <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+
+              <details className="bg-gray-700 rounded-md px-4 py-2 text-gray-100 hover:bg-gray-600">
+                <summary className="flex justify-between items-center cursor-pointer">
+                  <span>Components</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4 text-gray-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                {components.map((component, idx) => (
+                  <div key={idx} className="mt-2 capitalize">
+                    <Link
+                      to={component.path}
+                      className="block text-blue-400 mb-2 hover:underline"
+                      onClick={(e) => e.stopPropagation()} // Prevent dropdown toggle
+                    >
+                      {"button"}
+                    </Link>
+                  </div>
+                ))}
+              </details>
             </nav>
           </div>
         </div>

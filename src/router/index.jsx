@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../layouts/Layout";
-import TWLayout from '../pages/TWLayout'
+import TWLayout from "../pages/TWLayout";
 import App from "../App";
 import TWBackground from "../pages/TWBackground";
 import TWFilters from "../pages/TWFilters";
+import TWButtons from "../pages/TWButtons";
 
 export const router = createBrowserRouter([
   {
@@ -12,20 +13,24 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <App />
+        element: <App />,
       },
       {
         path: "/background",
-        element: <TWBackground />
+        element: <TWBackground />,
       },
       {
         path: "/layout",
-        element: <TWLayout />
+        element: <TWLayout />,
       },
       {
         path: "/filters",
-        element: <TWFilters />
-      }
-    ]
+        element: <TWFilters />,
+      },
+      {
+        path: "/button",
+        element: <TWButtons />,
+      },
+    ],
   },
 ]);
