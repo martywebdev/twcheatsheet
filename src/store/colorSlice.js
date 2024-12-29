@@ -1,26 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedStyles: {
-    text: { color: "black", shade: "500" },
-    background: { color: "", shade: "500" },
-    border: { color: "gray", shade: "300" },
-    ring: { color: "blue", shade: "500" },
-  },
 };
+
 export const colorSlice = createSlice({
-  name: "color",
+  name: "colors",
   initialState,
   reducers: {
-    setStyle: (state, action) => {
-      const { type, color, shade } = action.payload;
-      state.selectedStyles[type] = { color, shade };
+    setUtility: (state, action) => {
+      const { tag, value } = action.payload;
+      state[tag] = value;
+      state.utilities = Object.keys(state)
+        .filter(key => key !== 'colors' && state[key])  // Exclude 'fontStyles' and ensure the value is truthy
+        .map(key => state[key])  // Get the values
+        .join(' ');  // Join the values into a single string
     },
   },
 });
 
-// Export actions to dispatch
-export const { setStyle } = colorSlice.actions;
-
-// Export reducer to use in the store
+export const { setUtility } = colorSlice.actions;
 export default colorSlice.reducer;

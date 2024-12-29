@@ -1,9 +1,11 @@
+
 import clsx from "clsx";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { setStyle } from "../store/colorSlice";
+import { useEffect } from "react";
+import { useState } from "react";
+import Select from "./Select";
 
 const colors = [
+  "transparent",
   "white",
   "black",
   "slate",
@@ -30,7 +32,8 @@ const colors = [
   "rose",
 ];
 
-const tailwindShades = [
+const shades = [  
+  "",
   "50",
   "100",
   "200",
@@ -43,96 +46,63 @@ const tailwindShades = [
   "900",
 ];
 
-const ColorShadeSelector = ({ type = "text", show = false, label='text-', shade='shade' }) => {
- 
+const SelectColors = ({type, handleChange, label, defaultColor }) => {
+  const [color, setColor] = useState(defaultColor ?? '')
+  const [shade, setShade] = useState('')
 
-  const dispatch = useDispatch();
-  const selectedStyle = useSelector(
-    (state) => state.color.selectedStyles[type]
-  );
+  useEffect(() => {
+    if (!color) {
+      setShade('')
+      handleChange('')
+    }
+    if (color === 'white' || color === 'black') {
+      setShade('')
+      handleChange(`${type}-${color}`)
+      console.log('test')
+    }
+    if (color && shade) {
+      handleChange(`${type}-${color}-${shade}`)
+    }
 
-  // Handle color and shade change
-  const handleColorChange = (e) => {
-    dispatch(
-      setStyle({ type, color: e.target.value, shade: selectedStyle.shade })
-    );
+  }, [color, shade])
+
+  const onChange = (selectedColor) => {
+    setColor(selectedColor)
   };
 
-  const handleShadeChange = (e) => {
-    dispatch(
-      setStyle({ type, color: selectedStyle.color, shade: e.target.value })
-    );
-  };
-
-  // Dynamically generate the class
-  const previewClass = clsx(
-    selectedStyle.color === "white" || selectedStyle.color === "black"
-      ? `bg-${selectedStyle.color}`
-      : `bg-${selectedStyle.color}-${selectedStyle.shade}`,
-    "w-10 h-10 rounded-lg border shadow"
-  );
+  // const previewClass = clsx(
+  //   color.color === "white" || color.color === "black"
+  //     ? `bg-${hover ? color.hoverColor : color.color}`
+  //     : `bg-${
+  //         hover
+  //           ? `${color.hoverColor}-${color.hoverShade}`
+  //           : `${color.color}-${color.shade}`
+  //       }`,
+  //   "w-10 h-10 rounded-lg border shadow"
+  // );
 
   return (
-    <div className="flex space-x-4">
-      {/* Color Selector */}
-      <div>
-        <label
-          htmlFor="colorSelect"
-          className="block text-gray-700 font-medium mb-2"
-        >
-          {label}
-        </label>
-        <select
-          id="colorSelect"
-          value={selectedStyle.color}
-          onChange={handleColorChange}
-          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="" disabled >
-            Select a color
-          </option>
-          {colors.map((color) => (
-            <option value={color} key={color}>
-              {color}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Shade Selector */}
-      <div>
-        <label
-          htmlFor="shadeSelect"
-          className="block text-gray-700 font-medium mb-2"
-        >
-          {shade}
-        </label>
-        <select
-          id="shadeSelect"
-          value={selectedStyle.shade}
-          onChange={handleShadeChange}
-          className=" w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          disabled={selectedStyle.color === 'white' || selectedStyle.color === 'black'}
-        >
-          <option value="" disabled >
-            Select shade
-          </option>
-          {tailwindShades.map((shade) => (
-            <option value={shade} key={shade}>
-              {shade}
-            </option>
-          ))}
-        </select>
-      </div>
-
+    <div className="flex space-x-4 items-end">
+      <Select
+        options={colors}
+        handleChange={onChange}
+        label={label}
+        selected={color}
+      />
+      <Select
+        options={shades}
+        handleChange={(e) => setShade(e)}
+        // disabled={disabled}
+        selected={shade}
+      />
       {/* Preview */}
-      {show && (
+      {/* {show && (
         <div className="flex justify-center items-end">
           <div className={clsx(previewClass)}></div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
-export default ColorShadeSelector;
+export default SelectColors;
