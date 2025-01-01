@@ -133,7 +133,7 @@ const Layout = () => {
                       className="block text-blue-400 mb-2 hover:underline"
                       onClick={(e) => e.stopPropagation()} // Prevent dropdown toggle
                     >
-                      {"button"}
+                      {component.title}
                     </Link>
                   </div>
                 ))}

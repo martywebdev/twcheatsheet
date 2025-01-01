@@ -5,6 +5,7 @@ import App from "../App";
 import TWBackground from "../pages/TWBackground";
 import TWFilters from "../pages/TWFilters";
 import TWButtons from "../pages/TWButtons";
+import TWAvatar from "../pages/TWAvatar";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/button",
         element: <TWButtons />,
+      },
+      {
+        path: "/avatar",
+        element: <TWAvatar />,
       },
     ],
   },
