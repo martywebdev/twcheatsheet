@@ -6,5 +6,9 @@ export const components = [
     {
         title: 'avatar',
         path: '/components/avatar'
+    },
+    {
+        title: 'badges',
+        path: '/components/badges'
     }
 ]

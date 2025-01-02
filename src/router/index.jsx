@@ -9,6 +9,7 @@ import { lazy } from "react";
 import ComponentLayout from "../layouts/ComponentLayout";
 // import TWAvatar from "../pages/TWAvatar";
 const TWAvatar = lazy (() => import('../pages/TWAvatar'))
+const TWBadges = lazy(() => import('../pages/TWBadges'))
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ export const router = createBrowserRouter([
             path: "avatar",
             element: <TWAvatar />,
             handle: {title: 'Avatar'}
+          },
+          {
+            path: "badges",
+            element: <TWBadges />,
+            handle: {title: 'Badges'}
           },
         ]
       },
