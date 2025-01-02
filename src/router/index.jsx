@@ -6,6 +6,7 @@ import TWBackground from "../pages/TWBackground";
 import TWFilters from "../pages/TWFilters";
 import TWButtons from "../pages/TWButtons";
 import { lazy } from "react";
+import ComponentLayout from "../layouts/ComponentLayout";
 // import TWAvatar from "../pages/TWAvatar";
 const TWAvatar = lazy (() => import('../pages/TWAvatar'))
 
@@ -31,13 +32,22 @@ export const router = createBrowserRouter([
         element: <TWFilters />,
       },
       {
-        path: "/button",
-        element: <TWButtons />,
+        path: '/components',
+        element: <ComponentLayout />,
+        children: [
+          {
+            path: "button",
+            element: <TWButtons />,
+            handle: {title: 'Button'}
+          },
+          {
+            path: "avatar",
+            element: <TWAvatar />,
+            handle: {title: 'Avatar'}
+          },
+        ]
       },
-      {
-        path: "/avatar",
-        element: <TWAvatar />,
-      },
+     
     ],
   },
 ]);

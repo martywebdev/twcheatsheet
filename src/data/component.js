@@ -1,10 +1,10 @@
 export const components = [
     {
         title: 'button',
-        path: '/button',
+        path: '/components/button',
     }, 
     {
         title: 'avatar',
-        path: '/avatar'
+        path: '/components/avatar'
     }
 ]
