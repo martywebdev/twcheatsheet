@@ -10,5 +10,9 @@ export const components = [
     {
         title: 'badges',
         path: '/components/badges'
+    },
+    {
+        title: 'card',
+        path: '/components/card'
     }
 ]
