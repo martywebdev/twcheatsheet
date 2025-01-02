@@ -3,7 +3,7 @@ import React from "react";
 const TWButtons = () => {
   return (
     <>
-      <h2 className="font-bold text-3xl text-center x">Buttons</h2>
+      <h2 className="font-bold text-3xl text-center mb-3  ">Buttons</h2>
       <div className="center bg-gray-50 flex-col space-y-6">
         {/* <div className="flex flex-col items-center gap-4">
           <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700">

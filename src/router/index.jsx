@@ -5,7 +5,9 @@ import App from "../App";
 import TWBackground from "../pages/TWBackground";
 import TWFilters from "../pages/TWFilters";
 import TWButtons from "../pages/TWButtons";
-import TWAvatar from "../pages/TWAvatar";
+import { lazy } from "react";
+// import TWAvatar from "../pages/TWAvatar";
+const TWAvatar = lazy (() => import('../pages/TWAvatar'))
 
 export const router = createBrowserRouter([
   {
