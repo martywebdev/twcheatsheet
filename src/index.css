@@ -4,5 +4,5 @@
 
 
 .center {
-    @apply flex h-screen justify-center items-center
+    @apply flex min-h-screen justify-center items-center
 }
