@@ -3,7 +3,6 @@ import React from "react";
 const TWCard = () => {
   return (
     <div className="my-4">
-  
       <div className="rounded-lg shadow-lg border w-[450px]">
         <img
           src="/img/backdrop.jpg"
@@ -34,11 +33,24 @@ const TWCard = () => {
       </div>
 
       <div className="rounded-lg border shadow-lg p-3 mt-4 w-[450px] bg-gray-100">
-        <section className="p-3 bg-purple-500 rounded mb-2 text-white relative">$45/hour
+        <section className="p-3 bg-purple-500 rounded mb-2 text-white relative">
+          $45/hour
           <div className="absolute right-0 -top-1 border-l-8 border-b-8 size-7 rounded-l bg-purple-300"></div>
         </section>
-        <section className="bg-purple-500 py-4 px-5 rounded-tl-lg rounded-br-lg flex justify-center space-y-4">
-          <img src="/img/cyberpunk.jpg" alt="" className="rounded-full size-60" />
+        <section className="bg-purple-500 py-4 px-5 rounded-tl-lg rounded-br-lg flex flex-col justify-center space-y-4">
+          <div className="relative self-center size-60">
+            <img
+              src="/img/cyberpunk.jpg"
+              alt=""
+              className="absolute inset-0 w-full h-full z-10 rounded-full border-4"
+            />
+
+            <div className="absolute inset-0 rounded-full bg-transparent border-4 border-fuchsia-100">
+              <div className="bg-white bg-opacity-70 text-center font-bold h-10 w-full ">
+                Kolokoy Sta Ines
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
