@@ -12,6 +12,7 @@ const TWAvatar = lazy(() => import("../pages/TWAvatar"));
 const TWBadges = lazy(() => import("../pages/TWBadges"));
 const TWCard = lazy(() => import("../pages/TWCard"));
 const TWMenu = lazy(() => import("../pages/TWMenu"));
+const TWSidebar = lazy(() => import('../pages/TWSidebar'))
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ export const router = createBrowserRouter([
         path: "menu",
         element: <TWMenu />,
         handle: { title: "Menu" },
+      },
+      {
+        path: "sidebar",
+        element: <TWSidebar />,
+        handle: { title: "sidebar" },
       },
       {
         path: "/components",

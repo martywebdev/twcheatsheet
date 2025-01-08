@@ -18,5 +18,9 @@ export const components = [
     {
         title: 'menu',
         path: '/menu'
+    },
+    {
+        title: 'sidebar',
+        path: '/sidebar'
     }
 ]
