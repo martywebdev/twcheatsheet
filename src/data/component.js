@@ -14,5 +14,9 @@ export const components = [
     {
         title: 'card',
         path: '/components/card'
+    },
+    {
+        title: 'menu',
+        path: '/menu'
     }
 ]

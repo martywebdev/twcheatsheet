@@ -8,9 +8,10 @@ import TWButtons from "../pages/TWButtons";
 import { lazy } from "react";
 import ComponentLayout from "../layouts/ComponentLayout";
 // import TWAvatar from "../pages/TWAvatar";
-const TWAvatar = lazy (() => import('../pages/TWAvatar'))
-const TWBadges = lazy(() => import('../pages/TWBadges'))
-const TWCard = lazy(() => import('../pages/TWCard'))
+const TWAvatar = lazy(() => import("../pages/TWAvatar"));
+const TWBadges = lazy(() => import("../pages/TWBadges"));
+const TWCard = lazy(() => import("../pages/TWCard"));
+const TWMenu = lazy(() => import("../pages/TWMenu"));
 
 export const router = createBrowserRouter([
   {
@@ -34,32 +35,37 @@ export const router = createBrowserRouter([
         element: <TWFilters />,
       },
       {
-        path: '/components',
+        path: "menu",
+        element: <TWMenu />,
+        handle: { title: "Menu" },
+      },
+      {
+        path: "/components",
         element: <ComponentLayout />,
         children: [
           {
             path: "button",
             element: <TWButtons />,
-            handle: {title: 'Button'}
+            handle: { title: "Button" },
           },
           {
             path: "avatar",
             element: <TWAvatar />,
-            handle: {title: 'Avatar'}
+            handle: { title: "Avatar" },
           },
           {
             path: "badges",
             element: <TWBadges />,
-            handle: {title: 'Badges'}
+            handle: { title: "Badges" },
           },
           {
             path: "card",
             element: <TWCard />,
-            handle: {title: 'Card'}
+            handle: { title: "Card" },
           },
-        ]
+          
+        ],
       },
-     
     ],
   },
 ]);
