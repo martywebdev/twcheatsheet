@@ -22,5 +22,9 @@ export const components = [
     {
         title: 'sidebar',
         path: '/sidebar'
-    }
+    },
+    {
+        title: 'dark-mode',
+        path: '/components/dark-mode'
+    },
 ]

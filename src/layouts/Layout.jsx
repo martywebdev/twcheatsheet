@@ -10,13 +10,13 @@ const Layout = () => {
 
   return (
     <>
-      <div className="flex h-screen bg-gray-100">
-        <div className="hidden md:flex flex-col w-64 bg-gray-800">
-          <div className="flex items-center justify-center h-16 bg-gray-900">
+      <div className="flex h-screen ">
+        <div className="hidden md:flex flex-col w-64 dark:bg-gray-800 bg-cyan-50">
+          <div className="flex items-center justify-center h-16 ">
             <span className="text-white font-bold uppercase">Sidebar</span>
           </div>
           <div className="flex flex-col flex-1 overflow-y-auto">
-            <nav className="flex-1 px-2 py-4 bg-gray-800">
+            <nav className="flex-1 px-2 py-4 ">
               {tailwindClasses.map((tailwindClass, index) => (
                 <div className="mb-4" key={index}>
                   {/* Link */}
