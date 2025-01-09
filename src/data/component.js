@@ -35,4 +35,8 @@ export const components = [
         title: 'footer',
         path: '/footer'
     },
+    {
+        title: 'accordion',
+        path: '/components/accordion'
+    },
 ]

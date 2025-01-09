@@ -16,6 +16,7 @@ const TWSidebar = lazy(() => import('../pages/TWSidebar'))
 const TWDarkmode = lazy(() => import('../pages/TWDarkmode'))
 const TWDropdown = lazy(() => import('../pages/TWDropdown'))
 const TWFooter = lazy(() => import('../pages/TWFooter'))
+const TWAccordion = lazy(() => import('../pages/TWAccordion'))
 
 
 export const router = createBrowserRouter([
@@ -87,6 +88,11 @@ export const router = createBrowserRouter([
             path: "dropdown",
             element: <TWDropdown />,
             handle: { title: "Dropdown" },
+          },
+          {
+            path: "accordion",
+            element: <TWAccordion />,
+            handle: { title: "Accordion" },
           },
         ],
       },
