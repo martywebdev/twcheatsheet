@@ -14,6 +14,7 @@ const TWCard = lazy(() => import("../pages/TWCard"));
 const TWMenu = lazy(() => import("../pages/TWMenu"));
 const TWSidebar = lazy(() => import('../pages/TWSidebar'))
 const TWDarkmode = lazy(() => import('../pages/TWDarkmode'))
+const TWDropdown = lazy(() => import('../pages/TWDropdown'))
 
 
 export const router = createBrowserRouter([
@@ -75,6 +76,11 @@ export const router = createBrowserRouter([
             path: "dark-mode",
             element: <TWDarkmode />,
             handle: { title: "Dark Mode" },
+          },
+          {
+            path: "dropdown",
+            element: <TWDropdown />,
+            handle: { title: "Dropdown" },
           },
         ],
       },
