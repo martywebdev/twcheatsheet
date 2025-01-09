@@ -27,9 +27,12 @@ export const components = [
         title: 'dark-mode',
         path: '/components/dark-mode'
     },
-    ,
     {
         title: 'dropdown',
         path: '/components/dropdown'
+    },
+    {
+        title: 'footer',
+        path: '/footer'
     },
 ]

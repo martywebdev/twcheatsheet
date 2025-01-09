@@ -15,6 +15,7 @@ const TWMenu = lazy(() => import("../pages/TWMenu"));
 const TWSidebar = lazy(() => import('../pages/TWSidebar'))
 const TWDarkmode = lazy(() => import('../pages/TWDarkmode'))
 const TWDropdown = lazy(() => import('../pages/TWDropdown'))
+const TWFooter = lazy(() => import('../pages/TWFooter'))
 
 
 export const router = createBrowserRouter([
@@ -47,6 +48,11 @@ export const router = createBrowserRouter([
         path: "sidebar",
         element: <TWSidebar />,
         handle: { title: "sidebar" },
+      },
+      {
+        path: "footer",
+        element: <TWFooter />,
+        handle: { title: "footer" },
       },
       {
         path: "/components",
