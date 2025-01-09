@@ -11,7 +11,7 @@ const ComponentLayout = () => {
   return (
     <>
       <h2 className="font-bold text-3xl text-center mb-3 ">{title}</h2>
-      <div className="center bg-gray-50 flex-col space-y-6">
+      <div className="center bg-gray-50 dark:bg-gray-800 flex-col space-y-6">
         <Outlet />
       </div>
     </>

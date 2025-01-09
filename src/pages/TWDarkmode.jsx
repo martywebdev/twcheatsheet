@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const TWButtons = () => {
+const TWDarkmode = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check local storage for saved preference
     const savedMode = localStorage.getItem("theme");
@@ -27,7 +27,7 @@ const TWButtons = () => {
 
   return (
     <>
-      <div className="w-1/2 rounded-lg bg-gray-200 p-5 shadow dark:bg-gray-800 dark:text-white">
+      <div className="w-1/2 rounded-lg bg-gray-200 p-5 shadow dark:bg-gray-800 dark:text-white dark:border-2 dark:border-white">
         <div className="flex items-center justify-between">
           <h2 className="my-2 text-xl font-bold">Heading 1</h2>
           <div onClick={toggleDarkMode} className="cursor-pointer">
@@ -75,4 +75,4 @@ const TWButtons = () => {
   );
 };
 
-export default TWButtons;
+export default TWDarkmode;

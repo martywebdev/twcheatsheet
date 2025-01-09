@@ -11,7 +11,7 @@ const Layout = () => {
   return (
     <>
       <div className="flex h-screen ">
-        <div className="hidden md:flex flex-col w-64 dark:bg-gray-800 bg-cyan-50">
+        <div className="hidden md:flex flex-col w-64 bg-gray-800">
           <div className="flex items-center justify-center h-16 ">
             <span className="text-white font-bold uppercase">Sidebar</span>
           </div>
