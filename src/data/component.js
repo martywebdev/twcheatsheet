@@ -39,4 +39,8 @@ export const components = [
         title: 'accordion',
         path: '/components/accordion'
     },
+    {
+        title: 'modal',
+        path: '/components/modal'
+    },
 ]

@@ -7,17 +7,18 @@ import TWFilters from "../pages/TWFilters";
 import TWButtons from "../pages/TWButtons";
 import { lazy } from "react";
 import ComponentLayout from "../layouts/ComponentLayout";
+import { Suspense } from "react";
 // import TWAvatar from "../pages/TWAvatar";
 const TWAvatar = lazy(() => import("../pages/TWAvatar"));
 const TWBadges = lazy(() => import("../pages/TWBadges"));
 const TWCard = lazy(() => import("../pages/TWCard"));
 const TWMenu = lazy(() => import("../pages/TWMenu"));
-const TWSidebar = lazy(() => import('../pages/TWSidebar'))
-const TWDarkmode = lazy(() => import('../pages/TWDarkmode'))
-const TWDropdown = lazy(() => import('../pages/TWDropdown'))
-const TWFooter = lazy(() => import('../pages/TWFooter'))
-const TWAccordion = lazy(() => import('../pages/TWAccordion'))
-
+const TWSidebar = lazy(() => import("../pages/TWSidebar"));
+const TWDarkmode = lazy(() => import("../pages/TWDarkmode"));
+const TWDropdown = lazy(() => import("../pages/TWDropdown"));
+const TWFooter = lazy(() => import("../pages/TWFooter"));
+const TWAccordion = lazy(() => import("../pages/TWAccordion"));
+const TWModal = lazy(() => import("../pages/TWModal"));
 
 export const router = createBrowserRouter([
   {
@@ -57,7 +58,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/components",
-        element: <ComponentLayout />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ComponentLayout />
+          </Suspense>
+        ),
         children: [
           {
             path: "button",
@@ -93,6 +98,11 @@ export const router = createBrowserRouter([
             path: "accordion",
             element: <TWAccordion />,
             handle: { title: "Accordion" },
+          },
+          {
+            path: "modal",
+            element: <TWModal />,
+            handle: { title: "Modal" },
           },
         ],
       },
