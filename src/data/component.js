@@ -43,4 +43,8 @@ export const components = [
         title: 'modal',
         path: '/components/modal'
     },
+    {
+        title: 'pricelist',
+        path: '/components/pricelist'
+    },
 ]

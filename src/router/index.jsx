@@ -19,6 +19,7 @@ const TWDropdown = lazy(() => import("../pages/TWDropdown"));
 const TWFooter = lazy(() => import("../pages/TWFooter"));
 const TWAccordion = lazy(() => import("../pages/TWAccordion"));
 const TWModal = lazy(() => import("../pages/TWModal"));
+const TWPriceList = lazy(() => import("../pages/TWPriceList"));
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,11 @@ export const router = createBrowserRouter([
             path: "modal",
             element: <TWModal />,
             handle: { title: "Modal" },
+          },
+          {
+            path: "pricelist",
+            element: <TWPriceList />,
+            handle: { title: "PriceList" },
           },
         ],
       },
