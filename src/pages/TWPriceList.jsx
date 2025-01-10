@@ -3,8 +3,8 @@ import React from "react";
 const TWButtons = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center space-y-7 lg:flex-row lg:space-x-3 lg:space-y-0">
-        <div className="w-[400px] rounded-xl bg-gradient-to-tr from-slate-700/60 p-5 text-white shadow-md">
+      <div className="grid grid-cols lg:grid-cols-3 md:grid-cols-2 p-4 gap-3 mx-auto">
+        <div className=" rounded-xl bg-gradient-to-tr from-slate-700/60 p-5 text-white shadow-md">
           <div className="my-5 text-xl font-bold">Basic</div>
           <div className="my-5 text-3xl font-bold text-green-300">Free</div>
           <button className="w-full rounded-lg border border-slate-500 px-5 py-2 hover:bg-slate-900/50">
@@ -87,7 +87,7 @@ const TWButtons = () => {
             </div>
           </div>
         </div>
-        <div className="w-[400px] rounded-xl bg-gradient-to-tr from-slate-700/60 p-5 text-white shadow-md">
+        <div className="rounded-xl bg-gradient-to-tr from-slate-700/60 p-5 text-white shadow-md">
           <div className="my-5 text-xl font-bold">Basic</div>
           <div className="my-5 text-3xl font-bold text-green-300">Free</div>
           <button className="w-full rounded-lg border border-slate-500 px-5 py-2 hover:bg-slate-900/50">
@@ -170,7 +170,7 @@ const TWButtons = () => {
             </div>
           </div>
         </div>
-        <div className="w-[400px] rounded-xl bg-gradient-to-tr from-slate-700/60 p-5 text-white shadow-md">
+        <div className="rounded-xl bg-gradient-to-tr from-slate-700/60 p-5 text-white shadow-md">
           <div className="my-5 text-xl font-bold">Basic</div>
           <div className="my-5 text-3xl font-bold text-green-300">Free</div>
           <button className="w-full rounded-lg border border-slate-500 px-5 py-2 hover:bg-slate-900/50">
