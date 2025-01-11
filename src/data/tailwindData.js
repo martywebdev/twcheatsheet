@@ -241,4 +241,9 @@ export const tailwindClasses = [
     path: "/filters",
     sections: [],
   },
+  {
+    title: "Site",
+    path: "/site",
+    sections: [],
+  },
 ];
