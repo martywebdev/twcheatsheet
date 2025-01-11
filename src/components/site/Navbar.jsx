@@ -21,7 +21,7 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <span>Toto</span>
+          <span>UMLAS</span>
         </div>
         <div className="flex space-x-7">
           <a href="#">Home</a>
