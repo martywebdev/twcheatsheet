@@ -9,6 +9,7 @@ import { lazy } from "react";
 import ComponentLayout from "../layouts/ComponentLayout";
 import { Suspense } from "react";
 import Site from "../pages/Site";
+import Chat from "../pages/Chat";
 // import TWAvatar from "../pages/TWAvatar";
 const TWAvatar = lazy(() => import("../pages/TWAvatar"));
 const TWBadges = lazy(() => import("../pages/TWBadges"));
@@ -119,5 +120,9 @@ export const router = createBrowserRouter([
   {
     path: 'site',
     element: <Site />
+  },
+  {
+    path: 'chat',
+    element: <Chat />
   }
 ]);
